@@ -3,17 +3,31 @@
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.phonegap.hello-world"
         version   = "2.2.0">
-    <name>Hello World</name>
+    <name>Muzico</name>
+	
 
+	
     <description>
-        Hello World sample application that responds to the deviceready event.
+        An awesome application that will change the way people practive music.
     </description>
 
     <author href="http://phonegap.com" email="support@phonegap.com">
-        PhoneGap Team
+        Louis-Philippe Couture, Owen Ou and Sandra Cinq-Mars
     </author>
 
-    <feature name="http://api.phonegap.com/1.0/device" />
+	<feature name="http://api.phonegap.com/1.0/device" />
+	<feature name="http://api.phonegap.com/1.0/file"/>
+	<feature name="http://api.phonegap.com/1.0/media"/>
+	<plugin name="File" value="CDVFile" />
+	<plugin name="FileTransfer" value="CDVFileTransfer" />
+	
+    <!--
+	<feature name="http://api.phonegap.com/1.0/battery"/>
+	<feature name="http://api.phonegap.com/1.0/camera"/>
+	<feature name="http://api.phonegap.com/1.0/contacts"/>
+	<feature name="http://api.phonegap.com/1.0/geolocation"/>
+	<feature name="http://api.phonegap.com/1.0/network"/>
+	<feature name="http://api.phonegap.com/1.0/notification"/> -->
 
     <preference name="phonegap-version" value="2.2.0" />
     <preference name="orientation"      value="default" />
