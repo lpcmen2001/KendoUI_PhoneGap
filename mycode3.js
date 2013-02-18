@@ -90,10 +90,13 @@ function onFileSytemSuccess(fileSystem) {
   // Get the data directory, creating it if it doesn't exist.
   fileSystem.root.getDirectory("",{create:true},onDirectory,onError);
     if (getDevice() == "Android") {
-	src = "recording.amr";
+		src = "recording.amr";
 	}
-  // Create the lock file, if and only if it doesn't exist.	
-  fileSystem.root.getFile(src, {create: true, exclusive: false}, onFileEntry, onError);  
+	else if (getDevice() == "iOS"){
+	  // Create the lock file, if and only if it doesn't exist.	
+		fileSystem.root.getFile(src, {create: true, exclusive: false}, onFileEntry, onError);
+	}
+  
 }
  
 function onFileEntry(fileEntry) {
