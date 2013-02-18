@@ -64,8 +64,7 @@ function startRecording() {
   // Create your Media object
   if (getDevice() == "Android") {
 	src = "recording.amr";
-	}
-  mediaRec = new Media(directory.fullPath+"/"+src,
+	mediaRec = new Media(src,
   // Success callback
   function() {
     console.log("mediaRec -> success");
@@ -78,6 +77,23 @@ function startRecording() {
   // Record audio
   mediaRec.startRecord();
   alert("Started recording at :" +"/"+ src );
+	}
+  else if (getDevice() == "iOS"){
+	  mediaRec = new Media(directory.fullPath+"/"+src,
+  // Success callback
+  function() {
+    console.log("mediaRec -> success");
+  },
+  // Error callback
+  function(err) {
+    console.log("mediaRec -> error: "+ err.code);
+	alert("mediaRec -> error!");
+  });
+  // Record audio
+  mediaRec.startRecord();
+  alert("Started recording at :" +"/"+ src );
+  }
+
 }
  
 function stopRecording() {
@@ -91,7 +107,7 @@ function playRecording() {
   if (getDevice() == "Android"){
 	  alert("will initialize")
 	  src = "recording.amr";
-	  mediaRec = new Media(directory.fullPath+"/"+src,
+	  mediaRec = new Media(src,
   // Success callback
   function() {
     console.log("mediaRec play -> success");
