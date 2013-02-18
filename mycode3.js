@@ -61,7 +61,7 @@ function startRecording() {
   console.log("startRecording()"); 
   // Create your Media object
   if (getDevice() == "Android") {
-	src = "recording.apr";
+	src = "recording.amr";
 	}
   mediaRec = new Media(directory.fullPath+"/"+src,
   // Success callback
@@ -90,7 +90,7 @@ function onFileSytemSuccess(fileSystem) {
   // Get the data directory, creating it if it doesn't exist.
   fileSystem.root.getDirectory("",{create:true},onDirectory,onError);
     if (getDevice() == "Android") {
-	src = "recording.apr";
+	src = "recording.amr";
 	}
   // Create the lock file, if and only if it doesn't exist.	
   fileSystem.root.getFile(src, {create: true, exclusive: false}, onFileEntry, onError);  
@@ -112,7 +112,7 @@ function onDirectoryRead(entries) {
   //console.log("The dir has "+entries.length+" entries.");
   // Scan for audio src
     if (getDevice() == "Android") {
-	src = "recording.apr";
+	src = "recording.amr";
 	}
   for (var i=0; i<entries.length; i++) {
     //console.log(entries[i].name+' dir? '+entries[i].isDirectory);
