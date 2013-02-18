@@ -44,9 +44,11 @@ function onClick() {
   switch(state) {
     case 0: 
       startRecording(); 
+	  
       break;
     case 1: 
       stopRecording(); 
+	  alert("Stopped recording")
       break;
     default: 
       playRecording();
@@ -71,18 +73,22 @@ function startRecording() {
   // Error callback
   function(err) {
     console.log("mediaRec -> error: "+ err.code);
+	alert("mediaRec -> error!");
   });
   // Record audio
   mediaRec.startRecord();
+  alert("Started recording at :" +"/"+ src );
 }
  
 function stopRecording() {
    console.log("stopRecording()");
+   alert("about to stop recording");
    mediaRec.stopRecord();
 }
  
 function playRecording() {
   console.log("playRecording()");
+  alert("about to play!");
   mediaRec.play();
 }
  
@@ -91,6 +97,7 @@ function onFileSytemSuccess(fileSystem) {
   fileSystem.root.getDirectory("",{create:true},onDirectory,onError);
     if (getDevice() == "Android") {
 		src = "recording.amr";
+		alert("end of android init");
 	}
 	else if (getDevice() == "iOS"){
 	  // Create the lock file, if and only if it doesn't exist.	
