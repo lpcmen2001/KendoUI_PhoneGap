@@ -48,7 +48,6 @@ function onClick() {
       break;
     case 1: 
       stopRecording(); 
-	  alert("Stopped recording")
       break;
     default: 
       playRecording();
@@ -63,49 +62,48 @@ function startRecording() {
   console.log("startRecording()"); 
   // Create your Media object
   if (getDevice() == "Android") {
-	src = "recording.amr";
-	mediaRec = new Media(src,
-  // Success callback
-  function() {
-    console.log("mediaRec -> success");
-  },
-  // Error callback
-  function(err) {
-    console.log("mediaRec -> error: "+ err.code);
-	alert("mediaRec -> error!");
-  });
-  // Record audio
-  mediaRec.startRecord();
-  alert("Started recording at :" +"/"+ src );
+			src = "recording.amr";
+			mediaRec = new Media(src,
+		  // Success callback
+		  function() {
+			console.log("mediaRec -> success");
+		  },
+		  // Error callback
+		  function(err) {
+			console.log("mediaRec -> error: "+ err.code);
+			alert("mediaRec -> error!");
+		  });
+		  // Record audio
+		  mediaRec.startRecord();
+		  alert("Started recording at :" +"/"+ src );
 	}
   else if (getDevice() == "iOS"){
-	  mediaRec = new Media(directory.fullPath+"/"+src,
-  // Success callback
-  function() {
-    console.log("mediaRec -> success");
-  },
-  // Error callback
-  function(err) {
-    console.log("mediaRec -> error: "+ err.code);
-	alert("mediaRec -> error!");
-  });
-  // Record audio
-  mediaRec.startRecord();
-  alert("Started recording at :" +"/"+ src );
+			  mediaRec = new Media(directory.fullPath+"/"+src,
+		  // Success callback
+		  function() {
+			console.log("mediaRec -> success");
+		  },
+		  // Error callback
+		  function(err) {
+			console.log("mediaRec -> error: "+ err.code);
+			alert("mediaRec -> error!");
+		  });
+		  // Record audio
+		  mediaRec.startRecord();
+		  alert("Started recording at :" +"/"+ src );
   }
 
 }
  
 function stopRecording() {
    console.log("stopRecording()");
-   alert("about to stop recording");
    mediaRec.stopRecord();
+   alert("Stopped recording");
 }
  
 function playRecording() {
   console.log("playRecording()");
   if (getDevice() == "Android"){
-	  alert("will initialize")
 	  src = "recording.amr";
 	  mediaRec = new Media(src,
   // Success callback
@@ -117,12 +115,9 @@ function playRecording() {
     console.log("mediaRec play -> error: "+ err.code);
 	alert("mediaRec play -> error!");
   });
-	alert("initialized")
   }
-
-  alert("about to play!");
   mediaRec.play();
-  alert("started playing");
+  alert("Playing Back");
 }
  
 function onFileSytemSuccess(fileSystem) {
@@ -130,7 +125,6 @@ function onFileSytemSuccess(fileSystem) {
   fileSystem.root.getDirectory("",{create:true},onDirectory,onError);
     if (getDevice() == "Android") {
 		src = "recording.amr";
-		alert("end of android init");
 	}
 	else if (getDevice() == "iOS"){
 	  // Create the lock file, if and only if it doesn't exist.	
