@@ -88,8 +88,25 @@ function stopRecording() {
  
 function playRecording() {
   console.log("playRecording()");
+  if (getDevice() == "Android"){
+	  alert("will initialize")
+	  src = "recording.amr";
+	  mediaRec = new Media(directory.fullPath+"/"+src,
+  // Success callback
+  function() {
+    console.log("mediaRec play -> success");
+  },
+  // Error callback
+  function(err) {
+    console.log("mediaRec play -> error: "+ err.code);
+	alert("mediaRec play -> error!");
+  });
+	alert("initialized")
+  }
+
   alert("about to play!");
   mediaRec.play();
+  alert("started playing");
 }
  
 function onFileSytemSuccess(fileSystem) {
