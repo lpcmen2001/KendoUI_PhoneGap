@@ -8,98 +8,188 @@
     <script src="./content/shared/js/console.js"></script>
     <link href="./css/kendo.common.min.css" rel="stylesheet" />
     <link href="./css/kendo.mobile.all.min.css" rel="stylesheet" />
-	<script type="text/javascript" charset="utf-8" src="mycode3.js"></script>
+	<script type="text/javascript" charset="utf-8" src="mycode4.js"></script>
 	<script type="text/javascript" charset="utf-8" src="./js/cordova-2.4.0.js"></script>
 	<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
 </head>
-    <a href="./index.html">Back</a>
-    <div data-role="view" id="modalview-camera" data-title="HTML5 Camera">
-    <!-- <img src="./img/lens.png" class="camera-image" /><br /> -->
-	<img src="./img/title320.png" class="camera-image" onclick="onClick()" /><br />
-    <a data-role="button" data-rel="modalview" href="#modalview-login" id="modalview-open-button">Login</a>
+<!-- -->
+<a href="./index.html">Back</a>
+
+<!-- init for phonegap -->
+<div id="deviceready" class="blink">
+	<p class="event listening">Connecting to Device</p>
+	<p class="event received">Device is Ready</p>
+</div>
+<!-- end of init for phonegap -->
+
+<!-- initial login screen -->
+<div data-role="view"
+	id="modalview-background"
+	data-title="Muzico LoginScreen">
+	<img src="./img/title320.png" class="logo-image" onclick="onRecord()" />
+	<br />
+	<a data-role="button" data-rel="modalview" href="#modalview-login" id="modalview-open-button" >Login</a>
+	<a data-role="button" data-rel="external"    id="modalview-open-button" >About our app</a> <!-- href="http://www.tiny.cc/muzico2/" -->
+</div>.
+<!-- end of initial login screen -->
+
+<!-- modal login -->
+<div data-role="modalview" id="modalview-login" style="width: 95%; height: 270px;">
+	<div data-role="header">
+		<div data-role="navbar">
+			<span>Login</span>
+			<a data-click="closeModalViewLogin" data-role="button" data-align="right">Cancel</a>
+		</div>
+	</div>
+	<!-- two input field -->
+	<ul data-role="listview" data-style="inset">
+		<li><label for="username">Username:</label> <input type="text" id="username" /></li>
+		<li><label for="password">Password:</label> <input type="password" id="password" /></li>
+	</ul>
+	<!-- two buttons -->
+	<a data-click="checkModalViewLogin" href="#view-mainmenu" id="modalview-login-button" type="button" data-role="button" >Login</a>
+	<a data-click="skipModalViewLogin" href="#view-mainmenu" id="modalview-skip-button" type="button" data-role="button" >Skip</a>
+	<!-- <a data-click="closeModalViewLogin" id="modalview-reg-button" type="button" data-role="button">Register</a> -->
+	<style scoped>
+		#modalview-login-button,
+		#modalview-reg-button,
+		#modalview-skip-button,
+		#modalview-open-button {
+			display: block;
+			text-align: center;
+			margin: .6em .8em 0;
+			font-size: 1.2em;
+		}
+
+		#modalview-open-button {
+			margin: 0 3em;
+			padding: .5em;
+		}
+
+		#modalview-background {
+			text-align: center;
+		}
+
+		#modalview-background img {
+			display: block;
+			margin: 30px auto;
+		}
+
+		#modalview-background .km-content,
+		.km-ios #modalview-login .km-content {
+			/* background: url(./content/shared/img/patterns/pattern1.png) repeat 0 0; */
+			background: url(./img/background.jpg) repeat 0 0;
+		}
+		
+		.km-ios #modalview-background .km-button,
+		.km-ios #modalview-login .km-button,
+		.km-ios #modalview-background .km-navbar,
+		.km-ios #modalview-login .km-header {
+			background-color: #000;
+		}
+
+		.km-ios #modalview-background .km-button:active,
+		.km-ios #modalview-background .km-state-active,
+		.km-ios #modalview-login .km-button:active,
+		.km-ios #modalview-login .km-state-active {
+			background-color: #2e2e2e;
+		}
+
+		.km-ios #modalview-login #modalview-login-button {
+			background-color: Green;
+		}
+		
+		.km-ios #modalview-login #modalview-skip-button {
+			background-color: Red;
+		}
+
+		.km-tablet .km-ios #modalview-background .km-view-title, .km-tablet .km-ios #modalview-login .km-view-title {
+			color: #fff;
+			text-shadow: 0 -1px rgba(0,0,0,.5);
+		}
+
+	</style>
+</div>
+<!-- end of modal login -->
+
+<!-- main menu -->
+<div data-role="view" id="view-mainmenu" data-title="Main Menu" class="buttonMenu">
+    <ul data-role="listview" data-type="group" data-style="inset">
+        <li>
+            Muzico:
+            <ul>
+                <li>
+                    <i></i> <a data-role="button" href="#view-muzico" style="background-color: green" data-icon="play">Continue</a>
+                </li>
+                <li>
+                    <i></i> <a data-role="button" href="#view-muzico" data-icon="add" >New account</a>
+                </li>
+            </ul>
+        </li>
+ 
+    </ul>
+    <style scoped>
+        .buttonMenu .km-button:not(.km-back)
+        {
+            width: 90%;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+        }
+    </style>
+</div>
+<!-- end of main menu -->
+
+<div id="view-muzico" data-role="view" data-title="Muzico" data-layout="inApp-layout">
+Our App Here
 </div>
 
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
+<div id="view-teacherZone" data-role="view" data-title="Teacher Zone" data-layout="inApp-layout">
+Teacher Zone here
+</div>
 
-<div data-role="modalview" id="modalview-login" style="width: 95%; height: 270px;">
+<div id="view-settings" data-role="view" data-title="MVP Settings" data-layout="inApp-layout">
+MVP Setting Here
+</div>
+
+<div id="view-myRecording" data-role="view" data-title="My Recording" data-layout="inApp-layout">
+My recording here
+</div>
+
+
+<!--inApp-layout start -->
+<div id="layout" data-role="layout" data-id="inApp-layout">
     <div data-role="header">
         <div data-role="navbar">
-            <span>Login</span>
-            <a data-click="closeModalViewLogin" data-role="button" data-align="right">Cancel</a>
+            <!-- <a id="logout-button" class="nav-button" style="background-color: darkred" data-align="left" data-role="backbutton">Logout</a> BACKBUTTON -->
+			<a id="logout-button" class="nav-button" href="#modalview-background" style="background-color: darkred" data-align="left" data-role="button">Logout</a>
+            <span data-role="view-title"></span>
         </div>
     </div>
-
-    <ul data-role="listview" data-style="inset">
-        <li><label for="username">Username:</label> <input type="text" id="username" /></li>
-        <li><label for="password">Password:</label> <input type="password" id="password" /></li>
-    </ul>
-    <a data-click="closeModalViewLogin" id="modalview-login-button" type="button" data-role="button">Login</a>
-    <a data-click="closeModalViewLogin" id="modalview-reg-button" type="button" data-role="button">Register</a>
+    <div data-role="footer">
+    	<div data-role="tabstrip">
+        	 <a data-icon="mostviewed" href="#view-muzico">Muzico</a>
+             <a data-icon="bookmarks" href="#view-teacherZone">Teacher Zone</a>
+             <a data-icon="featured" href="#view-myRecording">My Recordings</a>
+			 <a data-icon="settings" href="#view-settings">MVP Settings</a>
+        </div>
+    </div>
 </div>
+<!--inApp-layout end -->
 
-    <p id="media">Recording audio...</p>
-    <p id="audio_position"></p>
 
-<style scoped>
-    #modalview-login-button,
-    #modalview-reg-button,
-    #modalview-open-button {
-        display: block;
-        text-align: center;
-        margin: .6em .8em 0;
-        font-size: 1.2em;
-    }
 
-    #modalview-open-button {
-        margin: 0 3em;
-        padding: .5em;
-    }
-
-    #modalview-camera {
-        text-align: center;
-    }
-
-    #modalview-camera img {
-        display: block;
-        margin: 30px auto;
-    }
-
-    #modalview-camera .km-content,
-    .km-ios #modalview-login .km-content {
-        /* background: url(./content/shared/img/patterns/pattern1.png) repeat 0 0; */
-		background: url(./img/background.jpg) repeat 0 0;
-    }
-	
-    .km-ios #modalview-camera .km-button,
-    .km-ios #modalview-login .km-button,
-    .km-ios #modalview-camera .km-navbar,
-    .km-ios #modalview-login .km-header {
-        background-color: #000;
-    }
-
-    .km-ios #modalview-camera .km-button:active,
-    .km-ios #modalview-camera .km-state-active,
-    .km-ios #modalview-login .km-button:active,
-    .km-ios #modalview-login .km-state-active {
-        background-color: #2e2e2e;
-    }
-
-    .km-ios #modalview-login #modalview-login-button {
-        background-color: Green;
-    }
-
-    .km-tablet .km-ios #modalview-camera .km-view-title, .km-tablet .km-ios #modalview-login .km-view-title {
-        color: #fff;
-        text-shadow: 0 -1px rgba(0,0,0,.5);
-    }
-
-</style>
 <script>
     function closeModalViewLogin() {
         $("#modalview-login").kendoMobileModalView("close");
+    }
+	function checkModalViewLogin() {
+		$("#modalview-login").kendoMobileModalView("close");
+		//onLogin();
+    }
+	function skipModalViewLogin() {
+		$("#modalview-login").kendoMobileModalView("close");
+		
     }
 </script>
 
@@ -107,10 +197,9 @@
             app.initialize();
     </script>
     <script>
-        window.kendoMobileApplication = new kendo.mobile.Application(document.body);
+        window.kendoMobileApplication = new kendo.mobile.Application(document.body, { transition: "slide" });
+		
     </script>
 
 </body>
-</html>
-y>
 </html>
