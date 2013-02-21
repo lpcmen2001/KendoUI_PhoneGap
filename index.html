@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="./css/tolito-1.0.1.css" />
     <!-- <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script> -->
     <!-- <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script> -->
-    <script src="./js/tolito-1.0.1.js"></script>
+    <script src="./js/tolito-1.0.1.js"></script> 
     
     <script src="./content/shared/js/console.js"></script>
     <link href="./css/kendo.common.min.css" rel="stylesheet" />
@@ -164,9 +164,7 @@
     <div id="progressVar">
         variable
 	</div>
-    <div id="my_progress_bar_1">
-        progress bar here
-    </div>
+    <div id="progressbar"></div>
    
 </div>
 
@@ -264,6 +262,47 @@ My recording here
     
     loadProgressBar();
     
+</script>
+
+<script>
+            $("#home-page")
+                .live('pagebeforeshow', function () {
+
+                TolitoProgressBar('progressbar')
+                    .setOuterTheme('b')
+                    .setInnerTheme('e')
+                    .isMini(true)
+                    .setMax(100)
+                    .setStartFrom(0)
+                    .setInterval(10)
+                    .showCounter(true)
+                    .logOptions()
+                    .build()
+                    .init();
+
+                /*
+                TolitoProgressBar('progressbar')
+    				.setOuterTheme('b')
+					.setInnerTheme('e')
+					.isMini(false)
+					.setMax(1000)
+					.setStartFrom(0)
+					.setInterval(10)
+                    .showCounter(false)
+					.logOptions()
+                    .build()
+                    .init();
+                            
+                TolitoProgressBar('progressbar')
+                    .logOptions()
+                    .build()
+                    .init();
+                            
+                TolitoProgressBar('progressbar')
+                    .build()
+                    .init();
+                */
+            });
 </script>
 
 </body>
