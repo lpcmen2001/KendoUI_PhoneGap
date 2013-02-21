@@ -345,8 +345,8 @@ function ProgressBar (container, maxVal, currentVal, name) {
     this.currentVal = currentVal;
     this.name = name;
     
-    bar.style.background = '#eef';
-    bar.style.borderRadius = '10px';
+    bar.style.background = '#823D3D';
+    //bar.style.borderRadius = '10px';
     bar.style.width = '0px';
     bar.style.height = '100%';
     
