@@ -347,13 +347,7 @@ ProgressBar.prototype.update = function(newValue){
 }
 
 
-/*
-// Instantiate new objects with 'new'
-var person = new Person("Bob", "M");
 
-// Invoke methods like this
-person.speak(); // alerts "Howdy, my name is Bob"
-*/
 
 
 
