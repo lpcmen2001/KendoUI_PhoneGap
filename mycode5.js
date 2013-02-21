@@ -27,7 +27,9 @@ app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-    	fsRef = window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSytemSuccess, null); 
+    	//fsRef = 
+        //window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSytemSuccess, null); 
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, null);
 		//alert(device.platform);
     },
     // Update DOM on a Received Event
@@ -242,6 +244,7 @@ function gotFS(fs) {
     var fail = failCB('getFile');
     fs.root.getFile("database.db", {create: true, exclusive: false},
     gotFileEntry, callError());
+    alert("done with gotFS");
 }
 
 function gotFileEntry(fileEntry) {
@@ -294,6 +297,19 @@ function readText() {
      
     return false;
 }
-
+/*
+// Stock user data info
+class dataNode {
+    var timer : String;
+    var nom : String;
+    var info : string;
+    
+    // Object constructor
+    function dataNode(p_timer, p_nom, p_info) {
+        timer = p_timer;
+        nom = p_nom;
+        info = p_info;
+    }
+}*/
 
 
