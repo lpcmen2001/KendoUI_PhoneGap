@@ -311,19 +311,29 @@ function readText() {
      
     return false;
 }
-/*
+
 // Stock user data info
-class dataNode {
+class DataNode {
     var timer : String;
     var nom : String;
     var info : string;
     
     // Object constructor
-    function dataNode(p_timer, p_nom, p_info) {
+    function DataNode(p_timer, p_nom, p_info) {
         timer = p_timer;
         nom = p_nom;
         info = p_info;
     }
-}*/
+}
+
+// Heritage class from dataNode
+class DataClient {
+    function DataClient(p_timer, p_nom, p_info, p_autre) {
+    	DataNode.call(this, p_timer, p_nom, p_info);
+    }
+    
+    DataClient.prototype = new DataNode();
+    DataClient.prototype.constructor = DataClient;
+}
 
 
