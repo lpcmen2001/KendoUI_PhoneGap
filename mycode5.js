@@ -376,7 +376,6 @@ function ProgressBar (container, maxVal, currentVal, name) {
 }
 
 ProgressBar.prototype.update = function(newValue){
-    bar.style.width = '0px';
     this.currentVal = newValue;
 }
 
