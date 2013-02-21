@@ -244,12 +244,10 @@ function getDevice() {
 }
 
 function onInitFs(fs) {
-    alert("getting fs");
     fs.root.getFile("test.txt", {create: true, exclusive: true}, gotFileEntry, callError);
-    alert("done with gotFS");
 }
 
-function removeFs(fs){
+function removeFs(fs) {
     fs.root.getFile("test.txt",{create:false, exclusive:false}, removeFile, callError);
         
 }
@@ -260,17 +258,11 @@ function removeFile(fileEntry){
 }
 
 function gotFS(fs) {
-    alert("getting fs");
-    //var fail = failCB('getFile');
-    alert("rightbefore");
     fs.root.getFile("database.txt", {create: true, exclusive: false},
     callSuccess(), callError());
-    alert("done with gotFS");
-    //gotFileEntry
 }
 
 function gotFileEntry(fileEntry) {
-    alert("got file entry");
     var fail = failCB('createWriter');
     file.entry = fileEntry;	 
     fileEntry.createWriter(gotFileWriter, fail);
