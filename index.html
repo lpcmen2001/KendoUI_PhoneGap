@@ -245,7 +245,8 @@ My recording here
     			myProgressBar.update(0);
     		else
                 document.getElementById("progressVar").innerHTML = "Progress at " + myProgressBar.currentVal + "/" + myProgressBar.maxVal;
-                myProgressBar.setPercentage(myProgressBar.currentVal);
+                var temp = myProgressBar.currentVal;
+                myProgressBar.setPercentage(temp);
     			myProgressBar.update(myProgressBar.currentVal+1);
     		
     	},

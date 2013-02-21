@@ -370,7 +370,7 @@ function ProgressBar (container, maxVal, currentVal, name) {
     text.style.textSize = '15px';
     container.appendChild(text);
     
-    this.set_percentage = function(percentage){
+    this.setPercentage = function(percentage){
         bar.style.width = percentage + "%";
     }
 }
