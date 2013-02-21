@@ -334,9 +334,6 @@ class progressBar {
     }
 }
 
-
-
-
 /*
 // Stock user data info
 class DataNode {
