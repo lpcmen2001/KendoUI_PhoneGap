@@ -153,7 +153,9 @@
 </div>
 
 <div id="view-teacherZone" data-role="view" data-title="Teacher Zone" data-layout="inApp-layout">
-    Teacher Zone here
+    <div id="progressVar">
+        variable
+	</div>
     <div id="my_progress_bar_0">
         <progress value="22" max="100"></progress>
     </div>
@@ -217,7 +219,7 @@ My recording here
     var timerId = null
     
     function loadProgressBar(){
-        
+        alert("loading progressBar");
         
         myProgressBar = new ProgressBar(document.getElementById('my_progress_bar_1'), 70, 1, "barName");
         
@@ -242,6 +244,7 @@ My recording here
     		if (myProgressBar.currentVal >= myProgressBar.maxVal)
     			myProgressBar.update(0);
     		else
+                document.getElementById("progressVar").innerHTML = "Progress at " + myProgressBar.currentVal + "/" + myProgressBar.maxVal;
     			myProgressBar.update(myProgressBar.currentVal+1);
     		
     	},
