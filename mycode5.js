@@ -312,6 +312,7 @@ function readText() {
     return false;
 }
 
+/*
 // Stock user data info
 class DataNode {
     var timer : String;
@@ -334,6 +335,6 @@ class DataClient {
     
     DataClient.prototype = new DataNode();
     DataClient.prototype.constructor = DataClient;
-}
+}*/
 
 
