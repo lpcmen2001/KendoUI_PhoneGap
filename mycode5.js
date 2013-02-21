@@ -5,7 +5,8 @@ var mediaRec = null; // the object for recording and play sound
 var directory = null; // holds a reference for directory reading
 var app = null;
 var timer = null;
-var rdata = null;
+var fsRef = null;
+
 // to navigate using code :   window.kendoMobileApplication.navigate('#view-muzico');
 
 app = {
@@ -26,7 +27,7 @@ app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-    	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSytemSuccess, null); 
+    	fsRef = window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSytemSuccess, null); 
 		//alert(device.platform);
     },
     // Update DOM on a Received Event
@@ -36,7 +37,7 @@ app = {
         var receivedElement = parentElement.querySelector('.received');
 
         listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+        receivedElement.setAttribute('style', 'display:block;'); 
 
         console.log('Received Event: ' + id);
     }
@@ -228,17 +229,23 @@ function onError(error) {
   'message: ' + error.message + '\n');
  }
  
+ function callError(){
+     alert("Error alert! Shoot to kill.");
+ }
+ 
 function getDevice() {
 	return device.platform;
 }
 	
 function gotFS(fs) {
+    alert("getting fs");
     var fail = failCB('getFile');
-    fs.root.getFile(FILENAME, {create: true, exclusive: false},
-    gotFileEntry, fail);
+    fs.root.getFile("database.db", {create: true, exclusive: false},
+    gotFileEntry, callError());
 }
 
 function gotFileEntry(fileEntry) {
+    alert("got file entry");
     var fail = failCB('createWriter');
     file.entry = fileEntry;	 
     fileEntry.createWriter(gotFileWriter, fail);
