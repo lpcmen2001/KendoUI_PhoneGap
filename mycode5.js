@@ -312,7 +312,7 @@ function readText() {
     return false;
 }
 
-
+/*
 class progressBar {
     var maxValue : int;
     var currentValue : int;
@@ -333,6 +333,7 @@ class progressBar {
         // IMPLEMENT
     }
 }
+*/
 
 /*
 // Stock user data info
