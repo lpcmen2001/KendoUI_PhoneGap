@@ -221,7 +221,7 @@ My recording here
     function loadProgressBar(){
         alert("loading progressBar");
         
-        myProgressBar = new ProgressBar(document.getElementById('my_progress_bar_1'), 70, 1, "barName");
+        myProgressBar = new ProgressBar(document.getElementById('my_progress_bar_1'), 200, 1, "barName");
         
         /*
         myProgressBar = new ProgressBar("my_progress_bar_1",{
@@ -241,6 +241,7 @@ My recording here
         */
     	
     	timerId = window.setInterval(function() {
+            alert("in timer");
     		if (myProgressBar.currentVal >= myProgressBar.maxVal)
     			myProgressBar.update(0);
     		else
@@ -249,6 +250,7 @@ My recording here
     		
     	},
     	1000);
+        alert("finished loading progressBar")è
     }
     
     loadProgressBar();
