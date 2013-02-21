@@ -347,8 +347,8 @@ function ProgressBar (container, maxVal, currentVal, name) {
     
     bar.style.background = '#eef';
     bar.style.borderRadius = '10px';
-    bar.style.width = '300px';
-    bar.style.height = '20px';
+    bar.style.width = '0px';
+    bar.style.height = '100%';
     
     /*
             borderRadius: 10,
@@ -369,9 +369,14 @@ function ProgressBar (container, maxVal, currentVal, name) {
     
     text.style.textSize = '15px';
     container.appendChild(text);
+    
+    this.set_percentage = function(percentage){
+        bar.style.width = percentage + "%";
+    }
 }
 
 ProgressBar.prototype.update = function(newValue){
+    bar.style.width = '0px';
     this.currentVal = newValue;
 }
 

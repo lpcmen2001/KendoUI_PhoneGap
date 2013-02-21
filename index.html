@@ -221,7 +221,7 @@ My recording here
     function loadProgressBar(){
         alert("loading progressBar");
         
-        myProgressBar = new ProgressBar(document.getElementById('my_progress_bar_1'), 200, 1, "barName");
+        myProgressBar = new ProgressBar(document.getElementById('my_progress_bar_1'), 100, 1, "barName");
         
         /*
         myProgressBar = new ProgressBar("my_progress_bar_1",{
@@ -245,6 +245,7 @@ My recording here
     			myProgressBar.update(0);
     		else
                 document.getElementById("progressVar").innerHTML = "Progress at " + myProgressBar.currentVal + "/" + myProgressBar.maxVal;
+                myProgressBar.setPercentage(myProgressBar.currentVal);
     			myProgressBar.update(myProgressBar.currentVal+1);
     		
     	},
