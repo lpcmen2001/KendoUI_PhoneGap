@@ -312,6 +312,64 @@ function readText() {
     return false;
 }
 
+
+class progressBar {
+    var maxValue : int;
+    var currentValue : int;
+    var name : String;
+    
+    function progressBar(p_maxVal, p_currentVal, p_name) {
+        maxValue = p_maxVal;
+        currentValue = p_currentVal;
+        name = p_name;
+    }
+    
+    function update(p_currentVal){
+        currentValue = p_currentVal;
+        //UPDATE GRAPHICS HERE
+    }
+    
+    function display() {
+        // IMPLEMENT
+    }
+}
+
+// le js
+<script type="text/javascript">
+
+var myProgressBar = null
+var timerId = null
+
+function loadProgressBar(){
+    myProgressBar = new ProgressBar("my_progress_bar_1",{
+		borderRadius: 10,
+		width: 300,
+		height: 20,
+		maxValue: 100,
+		labelText: "Loaded in {value,0} %",
+		orientation: ProgressBar.Orientation.Horizontal,
+		direction: ProgressBar.Direction.LeftToRight,
+		animationStyle: ProgressBar.AnimationStyle.LeftToRight1,
+		animationSpeed: 1.5,
+		imageUrl: 'images/v_fg12.png',
+		backgroundUrl: 'images/h_bg2.png',
+		markerUrl: 'images/marker2.png'
+	});
+	
+	timerId = window.setInterval(function() {
+		if (myProgressBar.value >= myProgressBar.maxValue)
+			myProgressBar.setValue(0);
+		else
+			myProgressBar.setValue(myProgressBar.value+1);
+		
+	},
+	100);
+}
+
+loadProgressBar();
+</script>
+
+
 /*
 // Stock user data info
 class DataNode {
