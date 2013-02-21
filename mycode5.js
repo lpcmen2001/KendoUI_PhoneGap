@@ -329,8 +329,11 @@ class DataNode {
 
 // Heritage class from dataNode
 class DataClient {
+    var autre : String;
+    
     function DataClient(p_timer, p_nom, p_info, p_autre) {
     	DataNode.call(this, p_timer, p_nom, p_info);
+    	autre = p_autre;
     }
     
     DataClient.prototype = new DataNode();
