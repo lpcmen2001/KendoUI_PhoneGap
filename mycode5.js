@@ -336,10 +336,20 @@ class progressBar {
 */
 
 
-function ProgressBar (maxVal, currentVal, name) {
+function ProgressBar (container, maxVal, currentVal, name) {
+    
+    var bar = document.createElement('div');
+    var text = document.createElement('div');
+    
     this.maxVal = maxVal;
     this.currentVal = currentVal;
     this.name = name;
+    
+    bar.style.background = '#eef';
+    container.appendChild(bar);
+    
+    text.style.textSize = '15px';
+    container.appendChild(text);
 }
 
 ProgressBar.prototype.update = function(newValue){
