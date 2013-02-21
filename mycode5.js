@@ -334,6 +334,27 @@ class progressBar {
 };
 
 
+function ProgressBar (maxVal, currentVal, name) {
+    this.maxVal = maxVal;
+    this.currentVal = currentVal;
+    this.name = name;
+}
+
+ProgressBar.prototype.update = function(newValue){
+    this.currentVal = newValue;
+}
+
+
+/*
+// Instantiate new objects with 'new'
+var person = new Person("Bob", "M");
+
+// Invoke methods like this
+person.speak(); // alerts "Howdy, my name is Bob"
+*/
+
+
+
 /*
 // Stock user data info
 class DataNode {
