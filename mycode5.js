@@ -346,6 +346,25 @@ function ProgressBar (container, maxVal, currentVal, name) {
     this.name = name;
     
     bar.style.background = '#eef';
+    bar.style.borderRadius = '10px';
+    bar.style.width = '300px';
+    bar.style.height = '20px';
+    
+    /*
+            borderRadius: 10,
+    		width: 300,
+    		height: 20,
+    		maxValue: 100,
+    		labelText: "Loaded in {value,0} %",
+    		orientation: ProgressBar.Orientation.Horizontal,
+    		direction: ProgressBar.Direction.LeftToRight,
+    		animationStyle: ProgressBar.AnimationStyle.LeftToRight1,
+    		animationSpeed: 1.5,
+    		imageUrl: 'faire',
+    		backgroundUrl: 'faire'
+    		markerUrl: 'faire' 
+     */
+    
     container.appendChild(bar);
     
     text.style.textSize = '15px';
