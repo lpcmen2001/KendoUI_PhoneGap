@@ -29,7 +29,7 @@ app = {
         app.receivedEvent('deviceready');
     	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSytemSuccess, null); 
         //fsRef = window.requestFileSystem(LocalFileSystem.TEMPORARY, 1024*1024, onInitFs, null);
-        window.requestFileSystem(LocalFileSystem.TEMPORARY, 1024*1024, removeFs(fs));
+        window.requestFileSystem(LocalFileSystem.TEMPORARY, 1024*1024, removeFs, null);
 		//alert(device.platform);
     },
     // Update DOM on a Received Event
@@ -189,7 +189,7 @@ function onFileSytemSuccess(fileSystem) {
     if (getDevice() == "Android") {
 		src = "recording.amr";
 	}
-	else if (getDevice() == "iPhone" || getDevice() == "iOS"){
+	else if (getDevice() == "iPhone" || getDevice() == "iOS") {
 	  // Create the lock file, if and only if it doesn't exist.	
 		fileSystem.root.getFile(src, {create: true, exclusive: false}, onFileEntry, onError);
 	}
@@ -249,12 +249,14 @@ function onInitFs(fs) {
     alert("done with gotFS");
 }
 
-function removeFs(fs) {   
-    fs.root.getFile("test.txt", {create: false}, gotFileEntry) {
+function removeFs(fs){
+    fs.root.getFile("test.txt",{create:false, exclusive:false}, removeFile, callError);
+        
+}
 
-    fileEntry.remove(function() {
-      console.log('File removed.');
-    }, errorHandler);
+function removeFile(fileEntry){
+    fileEntry.remove(function () {alert("file deleted");} ,callError);
+    
 }
 
 function gotFS(fs) {
