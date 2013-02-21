@@ -27,9 +27,8 @@ app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-    	//fsRef = 
-        //window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSytemSuccess, null); 
-        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, null);
+    	fsRef = window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSytemSuccess, null); 
+        window.requestFileSystem(window.TEMPORARY, 1024*1024, onInitFs, null);
 		//alert(device.platform);
     },
     // Update DOM on a Received Event
@@ -235,16 +234,29 @@ function onError(error) {
      alert("Error alert! Shoot to kill.");
  }
  
+ function callSuccess(){
+     alert("Success alert! Get cover.");
+ }
+ 
 function getDevice() {
 	return device.platform;
 }
-	
+
+function onInitFs(fs) {
+    alert("getting fs");
+    fs.root.getFile("test.txt", {create: true, exclusive: true}, function(fileEntry) {
+    }, errorHandler);
+    alert("done with gotFS");
+}
+
 function gotFS(fs) {
     alert("getting fs");
-    var fail = failCB('getFile');
-    fs.root.getFile("database.db", {create: true, exclusive: false},
-    gotFileEntry, callError());
+    //var fail = failCB('getFile');
+    alert("rightbefore");
+    fs.root.getFile("database.txt", {create: true, exclusive: false},
+    callSuccess(), callError());
     alert("done with gotFS");
+    //gotFileEntry
 }
 
 function gotFileEntry(fileEntry) {
