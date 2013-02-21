@@ -27,8 +27,9 @@ app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-    	fsRef = window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSytemSuccess, null); 
-        window.requestFileSystem(window.TEMPORARY, 1024*1024, onInitFs, null);
+    	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSytemSuccess, null); 
+        //fsRef = window.requestFileSystem(LocalFileSystem.TEMPORARY, 1024*1024, onInitFs, null);
+        window.requestFileSystem(LocalFileSystem.TEMPORARY, 1024*1024, removeFs(fs));
 		//alert(device.platform);
     },
     // Update DOM on a Received Event
@@ -244,9 +245,16 @@ function getDevice() {
 
 function onInitFs(fs) {
     alert("getting fs");
-    fs.root.getFile("test.txt", {create: true, exclusive: true}, function(fileEntry) {
-    }, errorHandler);
+    fs.root.getFile("test.txt", {create: true, exclusive: true}, gotFileEntry, callError);
     alert("done with gotFS");
+}
+
+function removeFs(fs) {   
+    fs.root.getFile("test.txt", {create: false}, gotFileEntry) {
+
+    fileEntry.remove(function() {
+      console.log('File removed.');
+    }, errorHandler);
 }
 
 function gotFS(fs) {
