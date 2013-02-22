@@ -232,11 +232,11 @@ function onError(error) {
  }
  
  function callError(){
-     alert("Error alert! Shoot to kill.");
+     //alert("Error alert! Shoot to kill.");
  }
  
  function callSuccess(){
-     alert("Success alert! Get cover.");
+     //alert("Success alert! Get cover.");
  }
  
 function getDevice() {
